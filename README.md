@@ -9,7 +9,7 @@
 ![Import](img/2.png)
 4. [Clone URI] を選択して、[Next]  
 ![Import](img/3.png)
-5. [URI] に `git@github.com:Null-PE/JavaPlayground.git` を貼り付けて、[Next]   
+5. [URI] に `https://github.com/Null-PE/JavaPlayground.git` を貼り付けて、[Next]   
 ![Import](img/4.png)
 6. [Directory] にソースコードの置く場所を設定し、[Next] -> [Next] -> [Finish]　  
 ![Import](img/5.png)
