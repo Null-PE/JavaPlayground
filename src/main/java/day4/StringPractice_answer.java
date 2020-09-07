@@ -1,5 +1,10 @@
 package day4;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class StringPractice_answer {
     public static void main(String[] args) {
         // 1.文字の長さを出力する length
@@ -34,7 +39,7 @@ public class StringPractice_answer {
 
         System.out.println(changeDomain("xxxx@worksap-hi.co.jp", "@gmail.com"));
         System.out.println(createMail("sun", "Xin", 2, "gmail.com"));
-        System.out.println(splitSub("jimi sub marshall", "-"));
+        System.out.println(splitSub("jimi suBN marShaL", "-"));
     }
 
     private static String changeDomain(String mailAddress, String domain) {
@@ -52,9 +57,9 @@ public class StringPractice_answer {
         return sb.append("@").append(domain).toString();
     }
 
-
     private static String splitSub(String target, String delimiter) {
-        return String.join(delimiter, target.toLowerCase().split(" "));
+        return Arrays.stream(target.toLowerCase().split("\\s"))
+                .map(StringUtils::capitalize).collect(Collectors.joining(delimiter));
     }
 }
 
