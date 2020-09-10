@@ -11,7 +11,7 @@
 [t_wadaさんのライブコーディング](https://www.youtube.com/watch?v=Q-FJ3XmFlT8)の鑑賞会をします。(実況・解説：監督、寺尾)
 
 ### 実践編
-- 実践編1: なぜテストがかけないか~DependencyInjection~
+- 実践編1: なぜテストがかけないか(DependencyInjection)
 - 実践編2: レガシーコードを（できるだけ）安全にリファクタリングしてみよう
 - 卒業課題: プロダクトのコードにテストを追加しよう
 
