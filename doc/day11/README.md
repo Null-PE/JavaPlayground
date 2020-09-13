@@ -125,4 +125,4 @@ assertThat(actual, is(not(equalTo(0))));
 
 ### そのほかのMatcher
 Matchersクラスには多数のMatcherが定義されています。
-[javadoc](http://hamcrest.org/JavaHamcrest/javadoc/2.2/)を参考にてください。
+[javadoc](http://hamcrest.org/JavaHamcrest/javadoc/2.2/org/hamcrest/Matchers.html)を参考にてください。
