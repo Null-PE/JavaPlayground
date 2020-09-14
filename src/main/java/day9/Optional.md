@@ -36,16 +36,41 @@ op.ifPresent(o -> {
 )
 ```
 
-### Best Practice
+### Optional についての注意点
 
-#### 1. orElse VS orElseGet
-> ザクとは違うのだよ
+#### NullPointerException を消滅
+`Optional` を利用する時、以下２点を気をつけないと、Exception発生する恐れがあります
+1. 初期化の時も`Optional`型の変数に`null`を与えない、`Optional.empty()`を利用する
+2. 直接に`get()`を呼ぶこと避けるばき。　`isPresent()`を確認せず`get()`を実行すると、`Optional`を使う意味が完全に失われてしまいます。
 
-#### 2. メソッドの戻る値しかOptional使わない
+#### 設計通りに`Optional`を使う
+1. 値が存在する時だけ処理を行う時、`isPresent()-get()`より`ifPresent()`を利用する
+2. 値を取得するだけの処理は、`isPresent()-get()` より`orElse() orElseGet()`を利用する
+3. 例外は`orElseThrow()`を利用して作る
+4. 基本型は`OptioanlInt OptionalLong OptionalDouble`を利用する
 
-#### 3. `Optional<T> a = null;`禁止
+#### `Optional`に関する悪い設計 
+1. `field`として`Optional`を利用すること
+2. パラメーターとして利用すること
+3. nullチェックのツールとして利用すること
 
-#### 4. `Optional.ofNullable(target).orElse()`はnullチェックの悪い例
+#### `orElse()` は `orElseGet()`より消費が高い
+```java
+Optional<String> str = Optional.of(" ");
+//A
+str.orElse(buildString());
+
+//B
+str.orElseGet(() -> buildString());
+
+```
+
+```java
+private String buildString(){
+    System.out.println("print........");
+    return "";
+}
+```
 
 
 [empty]:https://docs.oracle.com/javase/jp/8/docs/api/java/util/Optional.html#empty--
