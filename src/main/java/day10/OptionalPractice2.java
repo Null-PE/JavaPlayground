@@ -21,8 +21,8 @@ public class OptionalPractice2 {
 
 	/**
 	 * Employeeオブジェクトを見つけます
-	 * @param name Employeeの名前
-	 * @param defaultEmployee 存在しない場合に返すオブジェクト
+	 * @param name 取得するEmployeeの名前
+	 * @param defaultEmployee 存在しない場合に返すEmployeeオブジェクト
 	 * @return nullを返しません
 	 */
 	Employee findEmployeeOrDefault(String name, Employee defaultEmployee) {
@@ -32,7 +32,7 @@ public class OptionalPractice2 {
 
 	/**
 	 * Employeeオブジェクトを見つけます
-	 * @param name
+	 * @param name 取得するEmployeeの名前
 	 * @param defaultName 存在しない場合に返すEmployeeオブジェクトのname
 	 * @param defaultAge存在しない場合に返すEmployeeオブジェクトのage
 	 * @return nullを返しません
@@ -42,10 +42,13 @@ public class OptionalPractice2 {
 		return null;
 	}
 
+	/**
+	 * GoldCoinのリストを取得します
+	 */
 	List<GoldCoin> getGoldCoin() {
 		List<GoldCoin> coins = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
-			// 課題４: GoldCoinFactoryを通して、8秒以内に5枚のGoldCoinを手に入れなさい
+			// 課題４: GoldCoinFactoryを通して、(このメソッドの初回呼び出し時において)8秒以内に5枚のGoldCoinを手に入れなさい
 			// GoldCoinFactoryの実装を変更したり、直接GoldCoinをnewすることは禁止します
 			// また、if文を使うことも禁止します
 		}

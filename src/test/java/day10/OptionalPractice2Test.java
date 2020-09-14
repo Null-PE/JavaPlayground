@@ -37,7 +37,7 @@ public class OptionalPractice2Test {
 
 	@Test
 	public void 課題2_findEmployeeOrDefaultは存在する社員を返す() {
-		assertEquals("Alice", it.findEmployee("Alice").get().getName());
+		assertEquals("Alice", it.findEmployeeOrDefault("Alice", new Employee("George", 30)).getName());
 	}
 
 	@Test
@@ -49,7 +49,7 @@ public class OptionalPractice2Test {
 
 	@Test
 	public void 課題3_findEmployeeOrDefaultNameAndAgeは存在する社員を返す() {
-		assertEquals("Alice", it.findEmployee("Alice").get().getName());
+		assertEquals("Alice", it.findEmployeeOrDefaultNameAndAge("Alice", "George", 30).getName());
 	}
 
 	@Test
