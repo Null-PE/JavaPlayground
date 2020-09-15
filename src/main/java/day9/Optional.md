@@ -40,7 +40,7 @@ op.ifPresent(o -> {
 
 #### NullPointerException を消滅
 `Optional` を利用する時、以下２点を気をつけないと、Exception発生する恐れがあります
-1. 初期化の時も`Optional`型の変数に`null`を与えない、`Optional.empty()`を利用する
+1. `Optional`型の変数に`null`を与えない、`Optional.empty()`を利用する
 2. 直接に`get()`を呼ぶこと避けるばき。　`isPresent()`を確認せず`get()`を実行すると、`Optional`を使う意味が完全に失われてしまいます。
 
 #### 設計通りに`Optional`を使う
