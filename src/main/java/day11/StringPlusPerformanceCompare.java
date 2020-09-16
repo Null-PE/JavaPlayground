@@ -3,7 +3,7 @@ package day11;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StringPlusPerformanceCompre {
+public class StringPlusPerformanceCompare {
 
 	private static final String S1 = "s";
 
