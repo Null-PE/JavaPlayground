@@ -46,10 +46,19 @@ public class RegexSample {
 		String s6 = "cjk1000";
 		String s7 = "cws1000";
 		System.out.println(s6.replaceAll("cws|cjk", "csr"));
-		System.out.println(s6.replaceAll("cws|cjk", "csr"));
+		System.out.println(s7.replaceAll("cws|cjk", "csr"));
 
-		String s9 = "abc";
-		System.out.println(s9.matches("^[a].*"));
+		//  * + . ? { } ( ) [ ] ^ $ - |　を使う場合はエスケープ（\\を文字の前につける） 
+		String s8 = ".";
+		System.out.println(s8.matches("\\."));
+		String s9 = "*";
+		System.out.println(s9.matches("\\*"));
+		
+		// [] の中の場合は上記はエスケープ不要　^-]\\
+		String s10 = ".";
+		System.out.println(s10.matches("[.]"));
+		String s11 = "^";
+		System.out.println(s11.matches("[\\^]"));
 
 	}
 }
