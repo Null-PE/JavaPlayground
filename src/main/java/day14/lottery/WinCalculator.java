@@ -27,14 +27,14 @@ public class WinCalculator {
 		for( int row = 0; row < 3; row++) {
 			int value = scratch.getValue(row, 0);
 			if( value == scratch.getValue(row, 1) && value == scratch.getValue(row, 2)) {
-				score *= value * 100;
+				score *= value * 10;
 			}
 		}
 		// 列ビンゴ
 		for( int col = 0; col < 2; col++) {
 			int value = scratch.getValue(0, col);
 			if( value == scratch.getValue(1, col) && value == scratch.getValue(col, 2)) {
-				score *= value * 10;
+				score *= value * 100;
 			}
 		}
 		// 斜めビンゴ
