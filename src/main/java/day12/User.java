@@ -8,7 +8,7 @@ import java.util.Set;
  * 現状の実装はいくつかバグがあり、すべて仕様を満たしてはいません。
  * エラーとなったら仕様に合うように実装を修正してください。
  * 仕様1: getUsername()はsetUsername(name)でセットしたユーザ名を返す
- * 仕様2: toString()は"Task ["ではじまり"]"で終わる。
+ * 仕様2: toString()は"User ["ではじまり"]"で終わる。
  * 仕様3: toString()はユーザを"username=ユーザ名"の形式で含む
  * 仕様4: toString()はパスワードを含まない
  * 仕様5: equals(other)はユーザ名のみで一致判定をする。（パスワードが違っていても同じユーザ）
@@ -40,7 +40,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User {username=" + username + ", password=" + password + "}";
+		return "User [username=" + username + ", password=****]";
 	}
 
 	public Iterable<User> getFriends() {
@@ -68,11 +68,6 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
