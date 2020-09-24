@@ -41,7 +41,7 @@ public class UserTest {
 		assertThat(it.getPassword(), is("PASSWORD123"));
 	}
 
-    // * 仕様2: toString()は"User ["ではじまり"]"で終わる。
+	// * 仕様2: toString()は"User ["ではじまり"]"で終わる。
 	@Test
 	public void toString_StartsWithUserAndEnclosedWithSquareBrackets() {
 		assertThat(it.toString(), both(startsWith("User [")).and(endsWith("]")));
@@ -61,8 +61,7 @@ public class UserTest {
 		assertThat(it.toString(), not(containsString("PASSWORD123")));
 	}
 
-
-    // * 仕様5: equals(other)はユーザ名のみで一致判定をする。（パスワードが違っていても同じユーザ）
+	// * 仕様5: equals(other)はユーザ名のみで一致判定をする。（パスワードが違っていても同じユーザ）
 	@Test
 	public void equals_ReturnTrue_IfOtherUserHasTheSameUsernameButDifferentPassword() {
 		it.setUsername("USERNAME1");
