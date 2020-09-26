@@ -102,7 +102,7 @@ public class WinCalculatorTest {
 			{ 3, 3, 3 },
 			{ 6, 5, 3 }
 		});
-		assertThat(it.check(scratch), is(90L));
+		assertThat(it.check(scratch), is(900L));
 	}
 
 	@Test

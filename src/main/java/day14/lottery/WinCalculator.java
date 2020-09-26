@@ -22,7 +22,7 @@ public class WinCalculator {
 	 * @return あたり金額（はずれの場合は0を返す）
 	 */
 	public long check(IScratch scratch) {
-		int score = 1;
+		long score = 1;
 		// 行ビンゴ
 		for( int row = 0; row < 3; row++) {
 			int value = scratch.getValue(row, 0);
@@ -31,27 +31,27 @@ public class WinCalculator {
 			}
 		}
 		// 列ビンゴ
-		for( int col = 0; col < 2; col++) {
+		for( int col = 0; col < 3; col++) {
 			int value = scratch.getValue(0, col);
-			if( value == scratch.getValue(1, col) && value == scratch.getValue(col, 2)) {
-				score *= value * 100;
+			if( value == scratch.getValue(1, col) && value == scratch.getValue(2, col)) {
+				score *= value * 10;
 			}
 		}
 		// 斜めビンゴ
 		{
 			int value = scratch.getValue(0, 0);
 			if( value == scratch.getValue(1, 1) && value == scratch.getValue(2, 2)) {
-				score = value * 10;
+				score *= value * 10;
 			}
 		}
 		{
 			int value = scratch.getValue(0, 2);
-			if( value == scratch.getValue(1, 1) && value == scratch.getValue(2, 2)) {
+			if( value == scratch.getValue(1, 1) && value == scratch.getValue(2, 0)) {
 				score *= value * 10;
 			}
 		}
 
-		return score;
+		return score == 1 ? 0 : score;
 	}
 
 }
