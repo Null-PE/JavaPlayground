@@ -26,7 +26,7 @@ public class WinCalculatorTest {
 	}
 
 	@Test
-	public void check_１行目が全て1のときは100を返す() {
+	public void check_１行目が全て1のときは10を返す() {
 		MockScratch scratch = new MockScratch(new int[][] {
 			{ 1, 1, 1 },
 			{ 2, 3, 4 },
@@ -36,17 +36,7 @@ public class WinCalculatorTest {
 	}
 
 	@Test
-	public void check_2行目が全て4のときは400を返す() {
-		MockScratch scratch = new MockScratch(new int[][] {
-			{ 1, 2, 3 },
-			{ 4, 4, 4 },
-			{ 5, 6, 7 }
-		});
-		assertThat(it.check(scratch), is(40L));
-	}
-
-	@Test
-	public void check_3行目が全て7のときは700を返す() {
+	public void check_3行目が全て7のときは70を返す() {
 		MockScratch scratch = new MockScratch(new int[][] {
 			{ 1, 2, 3 },
 			{ 4, 5, 6 },
@@ -56,17 +46,17 @@ public class WinCalculatorTest {
 	}
 
 	@Test
-	public void check_2列目が全て5のときは500を返す() {
+	public void check_1列目が全て5のときは50を返す() {
 		MockScratch scratch = new MockScratch(new int[][] {
-			{ 1, 5, 2 },
-			{ 3, 5, 4 },
-			{ 6, 5, 7 }
+			{ 5, 1, 2 },
+			{ 5, 3, 4 },
+			{ 5, 6, 7 }
 		});
 		assertThat(it.check(scratch), is(50L));
 	}
 
 	@Test
-	public void check_3列目が全て8のときは800を返す() {
+	public void check_3列目が全て8のときは80を返す() {
 		MockScratch scratch = new MockScratch(new int[][] {
 			{ 1, 2, 8 },
 			{ 3, 4, 8 },
@@ -76,7 +66,7 @@ public class WinCalculatorTest {
 	}
 
 	@Test
-	public void check_斜め下が全て3のときは300を返す() {
+	public void check_斜め下が全て3のときは30を返す() {
 		MockScratch scratch = new MockScratch(new int[][] {
 			{ 3, 1, 2 },
 			{ 4, 3, 5 },
@@ -86,7 +76,7 @@ public class WinCalculatorTest {
 	}
 
 	@Test
-	public void check_斜上が全て6のときは600を返す() {
+	public void check_斜上が全て6のときは60を返す() {
 		MockScratch scratch = new MockScratch(new int[][] {
 			{ 1, 2, 6 },
 			{ 3, 6, 4 },
@@ -96,7 +86,7 @@ public class WinCalculatorTest {
 	}
 
 	@Test
-	public void check_複数ビンゴの際には得点が乗算される() {
+	public void check_行ビンゴが二つある時_得点が乗算される() {
 		MockScratch scratch = new MockScratch(new int[][] {
 			{ 2, 2, 2 },
 			{ 3, 3, 3 },
@@ -105,6 +95,35 @@ public class WinCalculatorTest {
 		assertThat(it.check(scratch), is(600L));
 	}
 
+	@Test
+	public void check_行ビンゴと列ビンゴがある時_得点が乗算される() {
+		MockScratch scratch = new MockScratch(new int[][] {
+			{ 1, 2, 3 },
+			{ 3, 3, 3 },
+			{ 6, 5, 3 }
+		});
+		assertThat(it.check(scratch), is(90L));
+	}
+
+	@Test
+	public void check_行ビンゴと斜め下ビンゴがある時_得点が乗算される() {
+		MockScratch scratch = new MockScratch(new int[][] {
+			{ 4, 2, 3 },
+			{ 6, 4, 7 },
+			{ 4, 4, 4 },
+		});
+		assertThat(it.check(scratch), is(1600L));
+	}
+
+	@Test
+	public void check_行ビンゴと斜め上ビンゴがある時_得点が乗算される() {
+		MockScratch scratch = new MockScratch(new int[][] {
+			{ 1, 2, 8 },
+			{ 8, 8, 8 },
+			{ 8, 4, 4 },
+		});
+		assertThat(it.check(scratch), is(6400L));
+	}
 	@Test
 	public void check_最大値もオーバーフローしない() {
 		MockScratch scratch = new MockScratch(new int[][] {
