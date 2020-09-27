@@ -28,10 +28,8 @@ HamburgerBuilderTestクラス, HumburgerBuilderクラス, Humbergerクラスの�
 
 #### トッピング表
 
-```
 |名前|価格(円)|カロリー(kcal)|
 |----|----|----|
 |Tonkatsu|400|450|
 |Vegetable|200|100|
 |Seafood|300|150|
-```
