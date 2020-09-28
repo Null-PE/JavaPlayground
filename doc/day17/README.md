@@ -33,3 +33,10 @@ HamburgerBuilderTestクラス, HumburgerBuilderクラス, Humbergerクラスの�
 |Tonkatsu|400|450|
 |Vegetable|200|100|
 |Seafood|300|150|
+
+
+## 参考：テスト駆動開発の黄金律
+
+1. RED 失敗するテストを書く
+1. GREEN テストを成功させる最低限のコードを書く
+1. REFACTOR テストを成功させたままで、コードをリファクタリングする
