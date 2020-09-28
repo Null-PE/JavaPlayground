@@ -1,5 +1,6 @@
 package day17;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -14,6 +15,12 @@ public class HamburgerBuilderTest {
 	@Before
 	public void setUp() {
 		this.it = new HamburgerBuilder();
+	}
+
+	@Test
+	public void HamburgerBuilderクラスを通してHamburgerクラスのインスタンスを作成() {
+		Hamburger hamburger = it.build();
+		assertThat(hamburger, instanceOf(Hamburger.class));
 	}
 
 	@Test
