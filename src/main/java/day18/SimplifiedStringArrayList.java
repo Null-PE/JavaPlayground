@@ -3,7 +3,7 @@ package day18;
 public class SimplifiedStringArrayList {
 
 	private String[] data;
-	private int size;
+	private int lastIndex;
 
 	public SimplifiedStringArrayList(int defaultCapacity) {
 		// TODO
