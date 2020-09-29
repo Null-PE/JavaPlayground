@@ -33,7 +33,7 @@ public class SimplifiedStringArrayListTest {
 		assertThat(it.get(0), is("a"));
 		assertThat(it.get(1), is("b"));
 		assertThat(it.get(2), is("c"));
-		assertThat(it.get(2), is("d"));
+		assertThat(it.get(3), is("d"));
 	}
 
 	@Test
