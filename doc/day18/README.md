@@ -213,7 +213,6 @@ public class ServiceA {
 ```
 
 ExampleはServiceAクラスとFactoryクラスに依存しています。
-またServiceAクラスはServiceBクラスに処理を移譲しています。
 
 ここで、FactoryクラスとSomeObjectをモックする必要があるとしましょう。
 例えば以下のようにかけます。
@@ -229,7 +228,7 @@ public void testMain() {
     when(factory.createSomeObject()).thenReturn(someObj);
     
     // someObjのモック実装
-    when(someObj.doSomething()).thenReturn(...);
+    when(someObj.getSomeEntity()).thenReturn("hello");
 
     assertThat(it.main(), is("Result: hello"));
 }
