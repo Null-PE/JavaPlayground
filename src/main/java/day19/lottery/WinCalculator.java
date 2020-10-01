@@ -1,4 +1,4 @@
-package day18.lottery;
+package day19.lottery;
 
 public class WinCalculator {
 

@@ -1,10 +1,10 @@
-package day18.lottery.factory;
+package day19.lottery.factory;
 
 import java.util.Random;
 
 import com.google.common.annotations.VisibleForTesting;
 
-import day18.lottery.IScratch;
+import day19.lottery.IScratch;
 
 /**
  * ランダムにくじを生成するファクトリクラスです。

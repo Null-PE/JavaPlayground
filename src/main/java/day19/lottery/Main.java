@@ -1,6 +1,6 @@
-package day18.lottery;
+package day19.lottery;
 
-import day18.lottery.factory.LotteryFactory;
+import day19.lottery.factory.LotteryFactory;
 
 public class Main {
 
