@@ -4,8 +4,8 @@
 ### 基礎編
 - JUnit道場1: JUnitを書いて実行してみよう
 - JUnit道場2: hamcrestを使ったアサーションを書いてみよう
-- JUnit道場3: 扱いにくいクラスをモックしよう（←いまここ）
-- JUnit道場4: **mockitoを使ってモックを簡単に書こう**
+- JUnit道場3: 扱いにくいクラスをモックしよう
+- JUnit道場4: **mockitoを使ってモックを簡単に書こう**（←いまここ）
 
 ## 事前準備
 このレポジトリ https://github.com/Null-PE/JavaPlayground.git
@@ -140,13 +140,13 @@ when(mock.hello(MockitoHamcrest.argThat(startsWith("hoge")))).thenReturn("piyo")
 また、メソッドの返り値でモックオブジェクトを返すこともできます。
 
 ```java
-@Mock(answer = RETURNS_MOCKS)
+@Mock(answer = RETURNS_DEEP_STUBS)
 ExampleAPI api;
 
 @Test
 public void test() {
     // アノテーションを使わない場合
-    // api = mock(ExampleAPI.class, RETURNS_MOCKS);
+    // api = mock(ExampleAPI.class, RETURNS_DEEP_STUBS);
     when(api.getSubAPI().hello()).thenReturn("hello");
     assertThat(api.getSubAPI().hello(), is("hello"));
 }
@@ -182,29 +182,31 @@ when(mock.add(anyInt(), anyInt()))
 モックは便利ですが、使いすぎるとテストの保守性が低下します。
 
 - メソッドの内部実装を変更した場合に、モックの呼び出し方法が変わってテストが通らなくなる事があります。
-- モックの挙動が正しい事を確認するのはテストを書いた人の責任です。モック元のクラスで仕様変更があった場合、モックの挙動を変えなければならないこともあります。
+- モックの挙動が正しい事を確認するのはプログラマの責任です。モック元のクラスで仕様変更があった場合、モックの挙動を変えなければならないこともあります。
 
 原則として、**ユニットテストの対象クラスが直接依存しているクラス**
 をモックすると良いでしょう。
 
+#### 例
+
 以下の例で、`Example.main()`をテストしたい場合を考えます。
 ```java
 public class Example {
-    private final ServiceA serviceA;
+    private final Service service;
     private final Factory factory;
 
-    public Example(ServiceA serviceA, Factory factory) {
-        this.serviceA = serviceA;
+    public Example(Service serviceA, Factory factory) {
+        this.service = service;
         this.factory = factory;
     }
 
     public String main() {
         SomeObject obj = factory.createSomeObject();
-        return serviceA.doService(obj);
+        return service.doService(obj);
     }
 }
 
-public class ServiceA {
+public class Service {
     public String doService(SomeObject obj) {
         String result = obj.getSomeEntity();
         return "Result: " + result;
@@ -212,17 +214,18 @@ public class ServiceA {
 }
 ```
 
-ExampleはServiceAクラスとFactoryクラスに依存しています。
+ExampleはServiceクラスとFactoryクラスに依存しています。
 
+#### アンチパターン
 ここで、FactoryクラスとSomeObjectをモックする必要があるとしましょう。
 例えば以下のようにかけます。
 
 ```java
 @Test
 public void testMain() {
-    ServiceA serviceA = new ServiceA();
+    Service service = new ServiceA;
     Factory factory = mock(Factory.class);
-    Example it = new Example(serviceA, factory);
+    Example it = new Example(service, factory);
     SomeObject someObj = mock(SomeObject.class);
     // factoryのモック実装
     when(factory.createSomeObject()).thenReturn(someObj);
@@ -234,19 +237,20 @@ public void testMain() {
 }
 ```
 
-この実装だと `someObj`のモックの挙動は、`ServiceA`の実装に依存しています。
-`ServiceA`の実装を変えた場合、`ExampleTest`に書かれたモックの修正が
+この実装だと `someObj`のモックの挙動は、`Service`の実装に依存しています。
+`Service`の実装を変えた場合、`ExampleTest`に書かれたモックの修正が
 必要になってしまいます。
 
 このように
 **「モックオブジェクトを依存クラスに渡す」** はアンチパターンです。その場合は依存クラスをモックしましょう。
 
-今回の場合、`ServiceA`をモックした方がメンテナンスが簡単になります。
+#### ベストプラクティス
+今回の場合、`Service`をモックした方がメンテナンスが簡単になります。
 
 ```java
 @Test
 public void testMain() {
-    ServiceA serviceA = mock(ServiceA.class)
+    Service service = mock(Service.class)
     Factory factory = mock(Factory.class);
     Example it = new Example(serviceA, factory);
     when(serviceA.doService(any())).thenReturn("Result: hello");
@@ -255,14 +259,21 @@ public void testMain() {
 }
 ```
 
-ServiceAをモックすることで、`SomeObject`の挙動を指定する必要がなくなり、
-モックの記述を減らす事ができました。
+Serviceをモックすることで、`SomeObject`の挙動を指定する必要がなくなり、
+モックの記述を減らす事ができました。`Service`の実装を変えても、
+`ExampleTest`のモックの修正は必要ありません。
 
-これだとただモック作っているだけで
-何もテストできてないんじゃないのと思われる方もいるでしょうが、
-ユニットテストの考え方では
-`ServiceA`や`Factory`の挙動はそれぞれのユニットテストで担保
-するということになります。
+このテストをみて「ただモック作っているだけで
+何もテストできてないんじゃないの？」と思われる方もいるでしょう。
+ユニットテストの考え方では`Service`や`Factory`の挙動は
+それぞれのユニットテストで担保するということになります。
+
+クラス同士の結合が正しいかはユニットテストの範囲外です。
+もちろん、モックを記述せずに依存クラスを動かせるのならば、
+結合してテストした方がテストの品質はよくなりますが、
+モックを書かなければならないのならば、
+最低限のモックに留めてメンテナンスコストを下げ、
+足りない結合テストはE2Eテスト等で担保するべきです。
 
 もちろん以上の話は原則であって、レガシーコードに対して原則が通用しない場合は
 多々あります。
