@@ -252,7 +252,7 @@ public void testMain() {
 public void testMain() {
     Service service = mock(Service.class)
     Factory factory = mock(Factory.class);
-    Example it = new Example(serviceA, factory);
+    Example it = new Example(service, factory);
     when(serviceA.doService(any())).thenReturn("Result: hello");
 
     assertThat(it.main(), is("Result: hello"));
