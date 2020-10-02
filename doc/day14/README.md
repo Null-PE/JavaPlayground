@@ -28,7 +28,7 @@
 - モッククラス作成
   - Randomクラスを継承したMockRandomクラスを作成してください。
   - `Iterator<Integer>`を保持するフィールド`iterator`とGetterを追加し、コンストラクタで受け取れるようにしてください。
-  - `nextInt(bound)`をオーバーライドし、イテレータを一つずつ消費するようにしてください。また、`bound` が9でないときはInvalidArgumentExceptionを投げるようにしてください。
+  - `nextInt(bound)`をオーバーライドし、イテレータを一つずつ消費するようにしてください。また、`bound` が9でないときはIllegalArgumentExceptionを投げるようにしてください。
 - テスト追加
   - LotteryFactoryTestクラスを作成してテストを追加してください。
   - テストケース
