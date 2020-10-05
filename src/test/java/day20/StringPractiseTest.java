@@ -68,17 +68,11 @@ public class StringPractiseTest {
 		}
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void splitByAny_セパレーターにnullが指定された場合にIllegalArgumentExceptionを投げる() {
 		String input = "suzuki.sho";
 		String separator = null;
-		try {
-			it.splitByAny(input, separator);
-			fail();
-		} catch (Exception expected) {
-			assertThat(expected, is(instanceOf(IllegalArgumentException.class)));
-			assertThat(expected.getMessage(), equalTo("セパレーターがnullです。セパレーターには文字列を指定してください。"));
-		}
+		it.splitByAny(input, separator);
 	}
 
 	@Test
@@ -89,28 +83,16 @@ public class StringPractiseTest {
 		assertArrayEquals(expected,  actual);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void splitDayTime_nullが来たときにIllegalArgumentExceptionを投げる() {
 		String input = null;
-		try {
-			it.splitDayTime(input);
-			fail();
-		} catch (Exception expected) {
-			assertThat(expected, is(instanceOf(IllegalArgumentException.class)));
-			assertThat(expected.getMessage(), equalTo("分割対象がnullです。\"yyyy/MM/dd hh:mm:ss\" の形式で指定してください。"));
-		}
+		it.splitDayTime(input);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void splitDayTime_日付以外のフォーマットが来たときにIllegalArgumentExceptionを投げる() {
 		String input = "2020/09/0110:30:30";
-		try {
-			it.splitDayTime(input);
-			fail();
-		} catch (Exception expected) {
-			assertThat(expected, is(instanceOf(IllegalArgumentException.class)));
-			assertThat(expected.getMessage(), equalTo("フォーマットが不正です。\\\"yyyy/MM/dd hh:mm:ss\\\" の形式で指定してください。"));
-		}
+		it.splitDayTime(input);
 	}
 
 	@Test
