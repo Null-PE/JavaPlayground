@@ -11,8 +11,6 @@ import java.util.stream.Stream;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.common.collect.Lists;
-
 public class StringPractiseTest {
 	IStringPractise it;
 	@Before
@@ -24,17 +22,14 @@ public class StringPractiseTest {
 	public void splitByComma_引数で渡された文字列をカンマで分割してStringの配列で返す() {
 		String input = "suzuki,sho";
 		String[] actual = it.splitByComma(input);
-		String[] expected = {"suzuki", "sho"};
-		assertArrayEquals(expected,  actual);
-		
+		assertThat(actual, is(arrayContaining("suzuki","sho")));
 	}
 
 	@Test
 	public void splitByDot_引数で渡された文字列をドットで分割してStringの配列で返す() {
 		String input = "suzuki.sho";
 		String[] actual = it.splitByDot(input);
-		String[] expected = {"suzuki", "sho"};
-		assertArrayEquals(expected,  actual);
+		assertThat(actual, is(arrayContaining("suzuki","sho")));
 	}
 
 	@Test
@@ -42,8 +37,7 @@ public class StringPractiseTest {
 		String input = "suzuki_sho";
 		String separator = "_";
 		String[] actual = it.splitByAny(input, separator);
-		String[] expected = {"suzuki", "sho"};
-		assertArrayEquals(expected,  actual);
+		assertThat(actual, is(arrayContaining("suzuki","sho")));
 	}
 
 	@Test
@@ -51,8 +45,7 @@ public class StringPractiseTest {
 		String input = "suzuki.sho";
 		String separator = ".";
 		String[] actual = it.splitByAny(input, separator);
-		String[] expected = {"suzuki", "sho"};
-		assertArrayEquals(expected,  actual);
+		assertThat(actual, is(arrayContaining("suzuki","sho")));
 	}
 
 	@Test
@@ -68,49 +61,30 @@ public class StringPractiseTest {
 		}
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void splitByAny_セパレーターにnullが指定された場合にIllegalArgumentExceptionを投げる() {
 		String input = "suzuki.sho";
 		String separator = null;
-		try {
-			it.splitByAny(input, separator);
-			fail();
-		} catch (Exception expected) {
-			assertThat(expected, is(instanceOf(IllegalArgumentException.class)));
-			assertThat(expected.getMessage(), equalTo("セパレーターがnullです。セパレーターには文字列を指定してください。"));
-		}
+		it.splitByAny(input, separator);
 	}
 
 	@Test
 	public void splitDayTime_日時を分割してStringの配列で返す() {
 		String input = "2020/09/01 10:30:30";
 		String[] actual = it.splitDayTime(input);
-		String[] expected = {"2020", "09", "01", "10", "30", "30"};
-		assertArrayEquals(expected,  actual);
+		assertThat(actual, is(arrayContaining("2020","09","01","10","30","30")));
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void splitDayTime_nullが来たときにIllegalArgumentExceptionを投げる() {
 		String input = null;
-		try {
-			it.splitDayTime(input);
-			fail();
-		} catch (Exception expected) {
-			assertThat(expected, is(instanceOf(IllegalArgumentException.class)));
-			assertThat(expected.getMessage(), equalTo("分割対象がnullです。\"yyyy/MM/dd hh:mm:ss\" の形式で指定してください。"));
-		}
+		it.splitDayTime(input);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void splitDayTime_日付以外のフォーマットが来たときにIllegalArgumentExceptionを投げる() {
 		String input = "2020/09/0110:30:30";
-		try {
-			it.splitDayTime(input);
-			fail();
-		} catch (Exception expected) {
-			assertThat(expected, is(instanceOf(IllegalArgumentException.class)));
-			assertThat(expected.getMessage(), equalTo("フォーマットが不正です。\\\"yyyy/MM/dd hh:mm:ss\\\" の形式で指定してください。"));
-		}
+		it.splitDayTime(input);
 	}
 
 	@Test
@@ -118,8 +92,7 @@ public class StringPractiseTest {
 		String input = "suzuki.sho";
 		String separator = ".";
 		List<String> actual = it.splitByAnyAsList(input, separator);
-		List<String> expected = Lists.newArrayList("suzuki", "sho");
-		assertThat(expected, is(actual));
+		assertThat(actual, contains("suzuki","sho"));
 	}
 
 	//うまい書き方募集
@@ -128,23 +101,20 @@ public class StringPractiseTest {
 		String input = "suzuki.sho";
 		String separator = ".";
 		Stream<String> actual = it.splitByAnyAsStream(input, separator);
-		List<String> expected = Lists.newArrayList("suzuki", "sho");
-		assertThat(expected, is(actual.collect(Collectors.toList())));
+		assertThat(actual.collect(Collectors.toList()), contains("suzuki","sho"));
 	}
 
 	@Test
 	public void convertToPascalFromSnakeTest_familyName_firstNameをパスカルケースに変換する() {
 		String input = "suzuki_shotaro";
 		String actual = it.convertToPascalFromSnake(input);
-		String expected = "SuzukiShotaro";
-		assertThat(expected, is(actual));
+		assertThat(actual, is("SuzukiShotaro"));
 	}
 
 	@Test
 	public void convertToSnakeFromPascal_familyNameFirstNameをパスカルケースに変換する() {
 		String input = "suzukiShotaro";
 		String actual = it.convertToSnakeFromPascal(input);
-		String expected = "suzuki_shotaro";
-		assertThat(expected, is(actual));
+		assertThat(actual, is("suzuki_shotaro"));
 	}
 }
