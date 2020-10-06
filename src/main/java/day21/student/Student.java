@@ -5,6 +5,9 @@ public class Student {
 	private int number;
 	private String fullName;
 
+	/**
+	 * @return 出席番号
+	 */
 	public int getNumber() {
 		return number;
 	}
@@ -13,6 +16,9 @@ public class Student {
 		this.number = number;
 	}
 
+	/**
+	 * @return 姓名。姓と名の間には半角スペースが入ります
+	 */
 	public String getFullName() {
 		return fullName;
 	}

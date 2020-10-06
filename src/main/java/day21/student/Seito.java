@@ -7,6 +7,9 @@ public class Seito {
 	private String sei;
 	private String mei;
 
+	/**
+	 * @return 出席番号
+	 */
 	public int getBango() {
 		return bango;
 	}
@@ -15,6 +18,9 @@ public class Seito {
 		this.bango = bango;
 	}
 
+	/**
+	 * @return 姓
+	 */
 	public String getSei() {
 		return sei;
 	}
@@ -23,6 +29,9 @@ public class Seito {
 		this.sei = sei;
 	}
 
+	/**
+	 * @return 名
+	 */
 	public String getMei() {
 		return mei;
 	}
