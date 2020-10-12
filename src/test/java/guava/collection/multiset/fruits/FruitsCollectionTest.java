@@ -61,10 +61,11 @@ public class FruitsCollectionTest {
 		assertThat(elementSet.size(), is(5));
 	}
 
-	// ここから追加課題。挑戦する課題の@Ignoreを外して、独自のメソッドを実装してみよう(ヒント: entrySetメソッドが使える)
+	// ここから追加課題。挑戦する課題の@Ignoreを外して、独自のメソッドを実装してみよう
 	@Test
 	@Ignore
 	public void 引数ありのelementSetはちょうど指定された数だけ存在している果物のCollectionを返す() {
+		// ヒント: entrySetメソッドが使えるかも？
 		Set<String> elementSet = it.elementSet(3);
 		assertThat(elementSet, is(containsInAnyOrder("apple", "orange")));
 		assertThat(elementSet.size(), is(2));
@@ -74,9 +75,14 @@ public class FruitsCollectionTest {
 	@Ignore
 	public void intersectionは共通部分を取る() {
 		// ヒント: https://guava.dev/releases/29.0-jre/api/docs/com/google/common/collect/Multisets.html
-		Multiset<String> multiset = HashMultiset.create(ImmutableList.of("apple", "orange", "apple"));
+		List<String> list = ImmutableList.of("apple", "guava", "apple", "guava", "pineapple");
+		Multiset<String> multiset = HashMultiset.create(list);
 		Multiset<String> result = it.intersection(multiset);
+
 		assertThat(result.count("apple"), is(2));
-		assertThat(result.count("orange"), is(1));
+		assertThat(result.count("guava"), is(1));
+		assertThat(result.count("pineapple"), is(0));
 	}
+
+	// さらに時間が余ったら、オリジナル問題を考えてみてください
 }
