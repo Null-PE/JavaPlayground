@@ -13,7 +13,6 @@ import org.junit.Test;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multiset;
 
 @SuppressWarnings("boxing")
@@ -30,7 +29,7 @@ public class FruitsCollectionTest {
 	public void setUp() {
 		List<String> fruits = ImmutableList
 				.of("apple", "orange", "apple", "grape", "apple", "strawberry", "orange", "guava", "orange", "grape");
-		it = new FruitsCollection(animals);
+		it = new FruitsCollection(fruits);
 	}
 
 	@Test
@@ -62,7 +61,7 @@ public class FruitsCollectionTest {
 		assertThat(elementSet.size(), is(5));
 	}
 
-	// ここから追加課題。挑戦する課題の@Ignoreを外して、独自のメソッドを実装してみよう(ヒント: Streamが使える)
+	// ここから追加課題。挑戦する課題の@Ignoreを外して、独自のメソッドを実装してみよう(ヒント: entrySetメソッドが使える)
 	@Test
 	@Ignore
 	public void 引数ありのelementSetはちょうど指定された数だけ存在している果物のCollectionを返す() {
@@ -75,7 +74,7 @@ public class FruitsCollectionTest {
 	@Ignore
 	public void intersectionは共通部分を取る() {
 		// ヒント: https://guava.dev/releases/29.0-jre/api/docs/com/google/common/collect/Multisets.html
-		Multiset<String> multiset = HashMultiset.create(ImmutableSet.of("apple", "orange", "apple"));
+		Multiset<String> multiset = HashMultiset.create(ImmutableList.of("apple", "orange", "apple"));
 		Multiset<String> result = it.intersection(multiset);
 		assertThat(result.count("apple"), is(2));
 		assertThat(result.count("orange"), is(1));
