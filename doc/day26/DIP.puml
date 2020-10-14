@@ -1,0 +1,62 @@
+@startuml
+class Controller{
+    + pushButton()
+}
+
+class Light{
+    + turnOn()
+    + turnOff()
+}
+
+Controller --> Light
+
+@enduml
+
+@startuml
+class Controller{
+    + pushButton()
+}
+
+interface Controllable <<interface>>{
+    + turnOn()
+    + turnOff()
+}
+
+class Light{
+    + turnOn()
+    + turnOff()
+}
+
+Controller -r-> Controllable
+Light -u-|> Controllable
+
+@enduml
+
+@startuml
+package 上位モジュール {
+
+class Controller{
+    + pushButton()
+}
+}
+package 上位モジュールサービス {
+
+interface Controllable <<interface>>{
+    + turnOn()
+    + turnOff()
+}
+}
+
+package 下位モジュール {
+
+class Light{
+    + turnOn()
+    + turnOff()
+}
+}
+
+
+Controller -r-> Controllable
+Light -u-|> Controllable
+
+@enduml
