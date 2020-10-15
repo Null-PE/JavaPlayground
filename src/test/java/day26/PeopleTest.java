@@ -36,7 +36,7 @@ public class PeopleTest {
 
     @Test
     public void feedCat() {
-        assertThat(people.feedPet(cat), is("Tomが肉を食べた。"));
+        assertThat(people.feedPet(cat), is("Tomが魚を食べた。"));
     }
 
 
