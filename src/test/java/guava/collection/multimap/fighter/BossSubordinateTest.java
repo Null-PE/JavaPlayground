@@ -45,19 +45,19 @@ public class BossSubordinateTest {
 	}
 
 	@Test
-	public void containsKeyはその上司が存在するかを返す() {
+	public void containsBossはその上司が存在するかを返す() {
 		assertThat(it.containsBoss(muten), is(true));
 		assertThat(it.containsBoss(goten), is(false));
 	}
 
 	@Test
-	public void containsValueはその部下が存在するかを返す() {
+	public void containsSubordinateはその部下が存在するかを返す() {
 		assertThat(it.containsSubordinate(muten), is(false));
 		assertThat(it.containsSubordinate(goten), is(true));
 	}
 
 	@Test
-	public void containsValueはその上司部下が存在するかを返す() {
+	public void containsPairはその上司部下が存在するかを返す() {
 		assertThat(it.containsPair(muten, goku), is(true));
 		assertThat(it.containsPair(muten, piccolo), is(false));
 	}
