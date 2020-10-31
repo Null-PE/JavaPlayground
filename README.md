@@ -29,6 +29,8 @@
 ### Go4
 * [Builder](doc/day17/README.md)
 * [Adapter](doc/day24/README.md)
+* [Facade](doc/designPattern/Facade/README.md)
+* [Strategy](doc/designPattern/Strategy/README.md)
 
 ### SOLID
 * [DIP](doc/day26/README.md)
