@@ -1,0 +1,8 @@
+@startuml Strategy Pattern
+interface ITaskStrategy
+
+TaskList *-- ITaskStrategy:delegation
+TaskList "1" *-- "*" Task:aggrigation
+ITaskStrategy <|-- DefaultTaskStrategy
+ITaskStrategy <|-- ImportanceTaskStrategy
+@enduml
