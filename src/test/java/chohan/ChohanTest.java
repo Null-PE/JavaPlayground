@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class ChoHanTest {
+public class ChohanTest {
 
 	@Test
 	public void 偶数が丁() {
