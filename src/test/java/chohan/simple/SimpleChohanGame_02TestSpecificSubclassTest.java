@@ -18,7 +18,7 @@ public class SimpleChohanGame_02TestSpecificSubclassTest {
 	SimpleChohanGame_02TestSpecificSubclass it;
 	Player player;
 
-	private SimpleChohanGame_02TestSpecificSubclass setDiceResult(int diceResult) {
+	private SimpleChohanGame_02TestSpecificSubclass getInstance(int diceResult) {
 		return new SimpleChohanGame_02TestSpecificSubclass() {
 			@Override
 			int getDiceResult() {
@@ -35,28 +35,28 @@ public class SimpleChohanGame_02TestSpecificSubclassTest {
 	@Test
 	public void 丁に賭けていて偶数ならプレイヤーの勝ち() {
 		player.setBet(Chohan.CHO);
-		it = setDiceResult(2);
+		it = getInstance(2);
 		assertThat(it.game(player), is(true));
 	}
 
 	@Test
 	public void 丁に賭けていて奇数ならプレイヤーの負け() {
 		player.setBet(Chohan.CHO);
-		it = setDiceResult(3);
+		it = getInstance(3);
 		assertThat(it.game(player), is(false));
 	}
 
 	@Test
 	public void 半に賭けていて偶数ならプレイヤーの負け() {
 		player.setBet(Chohan.HAN);
-		it = setDiceResult(2);
+		it = getInstance(2);
 		assertThat(it.game(player), is(false));
 	}
 
 	@Test
 	public void 半に賭けていて奇数ならプレイヤーの勝ち() {
 		player.setBet(Chohan.HAN);
-		it = setDiceResult(3);
+		it = getInstance(3);
 		assertThat(it.game(player), is(true));
 	}
 
