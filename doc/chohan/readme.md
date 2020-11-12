@@ -26,9 +26,12 @@
 
 ## 課題の流れ
 
+それぞれの書き方について、下記をやりましょう。
+
 1. [src/main/java/chohan/simple](https://github.com/Null-PE/JavaPlayground/tree/master/src/main/java/chohan/simple) と [src/test/java/chohan/simple](https://github.com/Null-PE/JavaPlayground/tree/master/src/test/java/chohan/simple) を自分の言葉で説明する
 1. 1番に倣って、 [src/main/java/chohan/normal](https://github.com/Null-PE/JavaPlayground/tree/master/src/main/java/chohan/normal) と [src/test/java/chohan/normal](https://github.com/Null-PE/JavaPlayground/tree/master/src/test/java/chohan/normal) を実装する
-1. 自分はどのアプローチが好き/嫌いだと思ったか、またそう思った理由を書く
+
+最後に、自分はどのアプローチが好き/嫌いだと思ったか、またそう思った理由を書きましょう。
     - 「好き嫌いとその理由」を自分の言葉にすることで、記憶が精緻化され、より忘れにくくなるから
 
 ## 参考URL
