@@ -12,6 +12,8 @@
    1. [JUnit 道場4](doc/day19/README.md)  
  
 ## Java
+### [String](doc/stringPractise/README.md)
+
 ### StreamAPI
 
 ### [Optional](doc/day9/Optional.md)
