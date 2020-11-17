@@ -3,6 +3,12 @@ package day20;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * {@link stringpractise.IStringPractise}に移行
+ * @author cosmo
+ *
+ */
+@Deprecated
 public interface IStringPractise {
 	/**
 	 * 引数で渡された文字列をカンマ(,)で分割してStringの配列で返す。  
