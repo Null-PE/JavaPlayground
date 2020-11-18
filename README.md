@@ -14,6 +14,8 @@
 ## Java
 ### [String](doc/stringPractise/README.md)
 
+### [Lambda](doc/JavaAPI/Lambda/lambda.md)
+
 ### StreamAPI
 
 ### [Optional](doc/day9/Optional.md)
