@@ -11,13 +11,14 @@
 - StringSlicePractise
 - StringSearchPractise
 - StringAdvancePractise
+- StringRegexPractise
 
 ## 進め方
 以下の自分にあった１～３のやり方で課題に取り組んでみてください。  
-`StringSplitPractise` を例に記載します。  
+`StringRegexPractise` を例に記載します。  
 
 ### 1. 実装だけ練習したい場合
-`stringpractise.StringSplitPractise` を実装するクラス `stringpractise.MyStringSplitPractise` を作ってください。  
+`stringpractise.StringRegexPractise` を実装するクラス `stringpractise.MyStringRegexPractise` を作ってください。  
 
 ```
 public class MyStringSplitPractise implements IStringSplitPractise{
@@ -27,19 +28,19 @@ public class MyStringSplitPractise implements IStringSplitPractise{
 Eclipseを使っている人は、クラス名のコンパイルエラーにカーソルをあわせて「実装されていないメソッドの追加」をクリックすると、課題のメソッドが作られます。
 
 また、動作確認用にUnitテストを用意しています。    
-動作確認時は `stringpractise.StringSplitPractiseTest.setUp()` で自分が作ったクラスを指定することで、実装を切り替えてください。 
+動作確認時は `stringpractise.StringRegexPractiseTest.setUp()` で自分が作ったクラスを指定することで、実装を切り替えてください。 
 
 ```
 	IStringPractise it;
 	@Before
 	public void setUp() throws Exception {
-		it = new StringSplitPractise(); // ここを、new MyStringSplitPractise() に変更する
+		it = new StringRegexPractise(); // ここを、new MyStringRegexPractise() に変更する
 	}
 
 ```
 
 ### 2. JUnitだけ練習したい場合
-`stringpractise.StringSplitPractiseTest` の中身を消して`stringpractise.StringSplitPractise` のUnitテストを実装してください。
+`stringpractise.StringRegexPractiseTest` の中身を消して`stringpractise.StringRegexPractise` のUnitテストを実装してください。
 
 ### 3. テスト駆動開発を練習したい場合
 自分で各クラスを作りテスト駆動開発をやってみてください。  
@@ -49,5 +50,5 @@ Eclipseを使っている人は、クラス名のコンパイルエラーにカ�
 
 課題だけでは物足りない場合は、以下の手順で課題を追加してください。
 1. 課題の回答を想定するテストケースを作成する
-2. `stringpractise.IStringSplitPractise` にメソッドを追加
-3. 回答例を`stringpractise.StringSplitPractise` に実装してください
+2. `stringpractise.IStringRegexPractise` にメソッドを追加
+3. 回答例を`stringpractise.StringRegexPractise` に実装してください
