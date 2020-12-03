@@ -21,7 +21,7 @@
 `stringpractise.StringRegexPractise` を実装するクラス `stringpractise.MyStringRegexPractise` を作ってください。  
 
 ```
-public class MyStringSplitPractise implements IStringSplitPractise{
+public class MyStringRegexPractise implements IStringRegexPractise{
 }
 ```
 
