@@ -1,5 +1,7 @@
 # F12や別のjsでDubble Gameを破壊しよう。そして即時関数でそれを阻止しよう
 
+今日破壊するコードはこちら
+https://github.com/Null-PE/JavaPlayground/tree/master/doc/DobbleGame
 
 #　getImageResourcesをF12で破壊せよ
 
