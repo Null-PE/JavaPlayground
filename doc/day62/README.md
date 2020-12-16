@@ -3,7 +3,7 @@
 今日破壊するコードはこちら
 https://github.com/Null-PE/JavaPlayground/tree/master/doc/DobbleGame
 
-#　getImageResourcesをF12で破壊せよ
+# getImageResourcesをF12で破壊せよ
 
 app.jsの今のコード
 ```
@@ -222,6 +222,8 @@ app.js
 
 これでめでたく、DubbleGameは誰にも影響をあたえないし、
 誰の影響もうけない（正確にはつかっているjqueryのようなグローバル変数の変更の影響はうける）良い子になりました。
+
+# 昔のjQueryの実装をみてみよう
 
 ちなみに、昔の1.X時代のjQueryの実装をみてみよう
 https://github.com/jquery/jquery/blob/1.6.4/src/core.js
