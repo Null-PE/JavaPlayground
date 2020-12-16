@@ -59,7 +59,7 @@ Map<String,Object> window ＝ HashMap():
 Map<String,Object> vars ＝ HashMap():　
 Map<String,Object> consts ＝ HashMap():　// すでにkeyがあればエラー
 
-初期化時
+ブラウザに実装されている関数をロード（こうなっているかは不明だが、わかりやすさのために、、）
 window.put(alert,function(){XX})
 window.put(Array,function(){XX})
 
@@ -107,10 +107,13 @@ index.html
 ```
 
 const,let,varがhack.jsにあったら？
+
 hack.jsに追加してみよう
 
 var -> 上書き
+
 const -> error
+
 let -> error
 
 -> errorになります。
