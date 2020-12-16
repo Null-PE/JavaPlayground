@@ -58,17 +58,16 @@ alert('hello');
 正確ではないが、Java人のためのブラウザでゲームの画面を読み込んだときの雑なイメージ
 ```
 Map<String,Object> window ＝ HashMap():
-Map<String,Object> vars ＝ HashMap():　
-Map<String,Object> consts ＝ HashMap():　// すでにkeyがあればエラー
 
 ブラウザに実装されている関数をロード（こうなっているかは不明だが、わかりやすさのために、、）
 window.put(alert,function(){XX})
 window.put(Array,function(){XX})
+https://developer.mozilla.org/ja/docs/Web/API/Window
 
 app.jsを読み込んだとき
-window.put(apendImage,function());
-window.put(pickUpAndRemoveRandomImages,function());
-window.put(getImageResources,function());
+window.put(apendImage,function(){略});
+window.put(pickUpAndRemoveRandomImages,function(){略});
+window.put(getImageResources,function(){略});
 
 F12でやったこと
 window.put(getImageResources,function());
@@ -76,18 +75,13 @@ window.put(getImageResources,function());
 
 なにがまずい？
 
-後勝なので、jquery-3.5.1.js内にgetImageResourcesってものが上記のように書かれていたら、フレームワークのjqueryが破壊される
-
 ```
     <script src="lib/jquery-3.5.1.js"></script>
     <script src="app.js"></script>
 ```
 
-
-
-あなたのプロダクトはどうだろう？
-
-もしあった場合の挙動を作ってみよう
+もし同じメソッド名やプロパティがあった場合に後勝ちで上書きされてしまう。
+実際に上書きしてみよう
 
 hack.jsを作ろう
 ```
@@ -96,7 +90,7 @@ function alert(){
 }
 
 function getImageResources(){
-    console.log('もう画像ないよ');    
+    console.log('もう画像ないから、2問目はいけませんよ');    
 }
 ```
 
@@ -108,17 +102,25 @@ index.html
     <script src="hack.js"></script>
 ```
 
-const,let,varがhack.jsにあったら？
+あなたのプロダクトは1画面にどれだけのjsをいれているだろうか？
+
+constやletはどうなる？
+
+再宣言なのでエラーになる。
+
+varは？
+
+エラーがでずに値が上書きされる。
 
 hack.jsに追加してみよう
 
-var -> 上書き
+```
+    let $card1 = 1
+    let $card2 = 2
+    const numberOfImagesInCard = 10;
 
-const -> error
+```
 
-let -> error
-
--> errorになります。
 
 # じゃあどうすればいいの？
 
@@ -248,81 +250,82 @@ https://github.com/jquery/jquery/blob/1.6.4/src/deferred.js
 今日のDubbleの最終形態
 
 ```
-(function($){
-   
-   function apendImage($targetCard,imageResourceArray){
-    imageResourceArray.forEach(element => {
-        $appendImage = $('<img>',element);
-        $appendImage.addClass('character-image');
-        $targetCard.append($appendImage);
+(function ($) {
+  function apendImage($targetCard, imageResourceArray) {
+    imageResourceArray.forEach((element) => {
+      $appendImage = $("<img>", element);
+      $appendImage.addClass("character-image");
+      $targetCard.append($appendImage);
     });
-}
+  }
 
-const numberOfImagesInCard = 8;
+  const numberOfImagesInCard = 8;
 
-function pickUpAndRemoveRandomImages(targetImageRersourceArray){
+  function pickUpAndRemoveRandomImages(targetImageRersourceArray) {
     let returnArray = [];
-    for(let i=0;i<numberOfImagesInCard -1;i++){
-        let randomIndex = Math.floor( (Math.random() * targetImageRersourceArray.length));
-        returnArray.push(targetImageRersourceArray[randomIndex]);
-        targetImageRersourceArray.splice(randomIndex,1);
+    for (let i = 0; i < numberOfImagesInCard - 1; i++) {
+      let randomIndex = Math.floor(
+        Math.random() * targetImageRersourceArray.length
+      );
+      returnArray.push(targetImageRersourceArray[randomIndex]);
+      targetImageRersourceArray.splice(randomIndex, 1);
     }
     return returnArray;
-}
+  }
 
-function getImageResources() {
-    return [{'src':'img/black-circle.png'},
-    {'src':'img/black-square.png'},
-    {'src':'img/black-triangle.png'},
-    {'src':'img/red-circle.png'},
-    {'src':'img/red-square.png'},
-    {'src':'img/red-triangle.png'},
-    {'src':'img/yellow-circle.png'},
-    {'src':'img/yellow-square.png'},
-    {'src':'img/yellow-triangle.png'},
-    {'src':'img/green-circle.png'},
-    {'src':'img/green-square.png'},
-    {'src':'img/green-triangle.png'},
-    {'src':'img/blue-circle.png'},
-    {'src':'img/blue-square.png'},
-    {'src':'img/blue-triangle.png'}
+  function getImageResources() {
+    return [
+      { src: "img/black-circle.png" },
+      { src: "img/black-square.png" },
+      { src: "img/black-triangle.png" },
+      { src: "img/red-circle.png" },
+      { src: "img/red-square.png" },
+      { src: "img/red-triangle.png" },
+      { src: "img/yellow-circle.png" },
+      { src: "img/yellow-square.png" },
+      { src: "img/yellow-triangle.png" },
+      { src: "img/green-circle.png" },
+      { src: "img/green-square.png" },
+      { src: "img/green-triangle.png" },
+      { src: "img/blue-circle.png" },
+      { src: "img/blue-square.png" },
+      { src: "img/blue-triangle.png" },
     ];
-}
-    
-    let $card1 = $("#card1");
-    let $card2 = $("#card2");
+  }
 
-    function startGame(){
-        let imageResources = getImageResources();
-        
-        let card1Images = pickUpAndRemoveRandomImages(imageResources);
-        let card2Images = pickUpAndRemoveRandomImages(imageResources)
-        
-        let answerIndex = Math.floor(Math.random() * imageResources.length);
-        let answerImage = imageResources[answerIndex];
-        answerImage['class'] = 'answer';
-        
-        let card1AnswerIndex = Math.floor(Math.random() * card1Images.length + 1);
-        card1Images.splice(card1AnswerIndex,0,answerImage);
-        
-        let card2AnswerIndex = Math.floor(Math.random() * card2Images.length + 1);
-        card2Images.splice(card2AnswerIndex,0,answerImage);
-        
-        apendImage($card1,card1Images);
-        apendImage($card2,card2Images);       
-    }
+  let $card1 = $("#card1");
+  let $card2 = $("#card2");
 
-    $('#game-field').on('click','.answer',function(){
-        alert('正解！');
-        $card1.empty();
-        $card2.empty();
-        startGame();
-    });
+  function startGame() {
+    let imageResources = getImageResources();
 
+    let card1Images = pickUpAndRemoveRandomImages(imageResources);
+    let card2Images = pickUpAndRemoveRandomImages(imageResources);
+
+    let answerIndex = Math.floor(Math.random() * imageResources.length);
+    let answerImage = imageResources[answerIndex];
+    answerImage["class"] = "answer";
+
+    let card1AnswerIndex = Math.floor(Math.random() * card1Images.length + 1);
+    card1Images.splice(card1AnswerIndex, 0, answerImage);
+
+    let card2AnswerIndex = Math.floor(Math.random() * card2Images.length + 1);
+    card2Images.splice(card2AnswerIndex, 0, answerImage);
+
+    apendImage($card1, card1Images);
+    apendImage($card2, card2Images);
+  }
+
+  $("#game-field").on("click", ".answer", function () {
+    alert("正解！");
+    $card1.empty();
+    $card2.empty();
     startGame();
-   
-   
+  });
+
+  startGame();
 })(jQuery);
+
 ```
 
 
