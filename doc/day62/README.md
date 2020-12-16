@@ -1,3 +1,6 @@
+# F12や別のjsでDubble Gameを破壊しよう。そして即時関数でそれを阻止しよう
+
+
 #　getImageResourcesをF12で破壊せよ
 
 app.js
@@ -164,12 +167,10 @@ function getImageResources(){
 
 ### 即時関数にしよう
 
-Gameって1回しかよばれないし、いる？なくせないの？
-
-なくせます。
+でもGameってうわがきできるじゃん。。。
+そう、できます。じゃあだめじゃん
 
 やりたいことは、functionで囲んですぐ実行したいだけ、
-
 それ即時関数でできます。F12でやってみよう
 
 引数なしパターン
@@ -213,11 +214,25 @@ app.js
 なければ外に探しにいく変数の巻き上げがあるので、関数内で解決できるので、こちらのほうがはやい
 https://qiita.com/fukamiiiiinmin/items/fff71001083e5db65c27
 
-参考
+```
+
+これでめでたく、DubbleGameは完全にひきこもりになりました。
+
+ちなみに、昔のjQueryの実装をみてみよう
 https://github.com/jquery/jquery/blob/1.6.4/src/core.js
 https://github.com/jquery/jquery/blob/1.6.4/src/deferred.js
 
 ```
+var JQuery = (function($){
+    var _jquery = {}
+    return _jquery;
+
+})($);
+```
+
+初期化して、初期化したものを外にだしているパターン
+
+今日はここまで
 
 
 
