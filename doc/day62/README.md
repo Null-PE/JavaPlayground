@@ -53,24 +53,58 @@ alert('hello');
 ```
 ダイアログがでないぞ
 
-なぜそうなるかというと、上記の書き方はMapのような構造体のwindowオブジェクトにfunctionが追加、上書きされていく仕組みだから
+なぜそうなるかというと、上記の書き方はMapのような構造体であるjsonオブジェクト{}にfunctionが追加、上書きされていく仕組みだから
+https://developer.mozilla.org/ja/docs/Learn/JavaScript/Objects/JSON
 
-正確ではないが、Java人のためのブラウザでゲームの画面を読み込んだときの雑なイメージ
+正確ではないが、ゲームの画面を読み込んだときの雑なイメージ
 ```
-Map<String,Object> window ＝ HashMap():
+var window ＝ {};
 
 ブラウザに実装されている関数をロード（こうなっているかは不明だが、わかりやすさのために、、）
-window.put(alert,function(){XX})
-window.put(Array,function(){XX})
+window.alert = function(val){xxx}); 
+window.console = function(val){xxx});
+
+or 
+
+window = { 
+  alert: function(){
+    XXXXX
+  },
+  console: function(){
+    XXX;
+  }
+}
+
 https://developer.mozilla.org/ja/docs/Web/API/Window
 
 app.jsを読み込んだとき
-window.put(apendImage,function(){略});
-window.put(pickUpAndRemoveRandomImages,function(){略});
-window.put(getImageResources,function(){略});
+window.apendImage =function(){略};
+window.pickUpAndRemoveRandomImages = function(){略};
+window.getImageResources=function(){略A};
+
+or 
+
+window = { 
+  alert: function(){
+    XXXXX
+  },
+  console: function(){
+    XXX;
+  },
+  apendImage: function(){
+    XXX;
+  },
+  pickUpAndRemoveRandomImages: function(){
+    XXX;
+  },
+  getImageResources: function(){
+    XXX;
+  }
+}
+
 
 F12でやったこと
-window.put(getImageResources,function());
+window.getImageResources=function(){CCC};
 ```
 
 なにがまずい？
