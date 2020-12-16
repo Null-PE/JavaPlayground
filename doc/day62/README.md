@@ -130,13 +130,14 @@ F12
 ```
 function a(){
 
-    function b(){
+    function b_(){
         console.log('abc');
     }
 
     B();
 }
 ```
+https://w.atwiki.jp/aias-jsstyleguide2/pages/15.html#naming
 
 ```
 b();
@@ -187,11 +188,11 @@ function getImageResources(){
 引数なしパターン
 ```
 (function(){
-    function a(){
+    function a_(){
        alert('log');
     }
     
-    a();
+    a_();
     
 })();
 
@@ -201,11 +202,11 @@ function getImageResources(){
 ```
 (function(val){
 
-    function a(c){
+    function a_(c){
        alert(c);
     }
     
-    a(val);
+    a_(val);
 })('kobayashi');
 
 ```
@@ -251,7 +252,7 @@ https://github.com/jquery/jquery/blob/1.6.4/src/deferred.js
 
 ```
 (function ($) {
-  function apendImage($targetCard, imageResourceArray) {
+  function apendImage_($targetCard, imageResourceArray) {
     imageResourceArray.forEach((element) => {
       $appendImage = $("<img>", element);
       $appendImage.addClass("character-image");
@@ -259,9 +260,9 @@ https://github.com/jquery/jquery/blob/1.6.4/src/deferred.js
     });
   }
 
-  const numberOfImagesInCard = 8;
+  const numberOfImagesInCard_ = 8;
 
-  function pickUpAndRemoveRandomImages(targetImageRersourceArray) {
+  function pickUpAndRemoveRandomImages_(targetImageRersourceArray) {
     let returnArray = [];
     for (let i = 0; i < numberOfImagesInCard - 1; i++) {
       let randomIndex = Math.floor(
@@ -273,7 +274,7 @@ https://github.com/jquery/jquery/blob/1.6.4/src/deferred.js
     return returnArray;
   }
 
-  function getImageResources() {
+  function getImageResources_() {
     return [
       { src: "img/black-circle.png" },
       { src: "img/black-square.png" },
@@ -296,7 +297,7 @@ https://github.com/jquery/jquery/blob/1.6.4/src/deferred.js
   let $card1 = $("#card1");
   let $card2 = $("#card2");
 
-  function startGame() {
+  function startGame_() {
     let imageResources = getImageResources();
 
     let card1Images = pickUpAndRemoveRandomImages(imageResources);
@@ -323,7 +324,7 @@ https://github.com/jquery/jquery/blob/1.6.4/src/deferred.js
     startGame();
   });
 
-  startGame();
+  startGame_();
 })(jQuery);
 
 ```
