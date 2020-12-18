@@ -67,8 +67,8 @@ public class StringRegexPractise implements IStringRegexPractise {
 
 	@Override
 	public String replaceToRereleaseVersion(String target, String rereleaseNum) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		Pattern pattern = Pattern.compile("([A-Z]{3}[0-9]{6})([^0-9])");
+		return pattern.matcher(target).replaceAll("$1" + rereleaseNum + "$2");
 	}
 
 	@Override
@@ -108,9 +108,9 @@ public class StringRegexPractise implements IStringRegexPractise {
 	}
 
 	@Override
-	public boolean extractFileName(String target) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
+	public String extractFileName(String target) {
+		Pattern pattern = Pattern.compile("(^.*\\\\)([^\\\\]+)(\\..+$)");
+		return pattern.matcher(target).replaceAll("$2");
 	}
 
 	@Override

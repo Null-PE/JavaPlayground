@@ -1,5 +1,7 @@
 package stringpractise;
 
+import net.bytebuddy.asm.Advice.Return;
+
 /**
  * 正規表現の練習</br>
  * 
@@ -76,8 +78,8 @@ public interface IStringRegexPractise {
 	
 	/**
 	 * 引数 target に再リバージョンなしCOMPANYのバージョン番号が含まれていたら、再リバージョンをつけて返してください。</br>
-	 * 例）各位　CIM165400で致命的な不具合が発生しました。 \r\n CIM165400~CIM165402の再リリースをお願いします。 </br>
-	 * -> 各位　CIM16540000で致命的な不具合が発生しました。 \r\n CIM16540000~CIM16540200の再リリースをお願いします。
+	 * 例）各位　CIM165400で致命的な不具合が発生しました。 \r\n CIM165400~CIM165402の再リリースをお願いします。, 01 </br>
+	 * -> 各位　CIM16540001で致命的な不具合が発生しました。 \r\n CIM16540001~CIM16540201の再リリースをお願いします。
 	 */
 	public String replaceToRereleaseVersion(String target, String rereleaseNum);
 	
@@ -123,13 +125,11 @@ public interface IStringRegexPractise {
 	public boolean judgeEnglishSentence(String target);
 	
 	/**
-	 * ファイルのパスからファイル名(拡張子なし)を抽出してください </br>
+	 * ファイルのフルパスからファイル名(拡張子なし)を抽出してください </br>
 	 * 例）C:\\users\\works\\files\\README.txt -> README
-	 *     C:\\users\\works\\files\\README -> README
-	 *     README.txt -> README
 	 *     C:\\users\\works\\files.txt\\README.txt -> README
 	 */
-	public boolean extractFileName(String target);
+	public String extractFileName(String target);
 	
 	/**
 	 * テスト用のメールアドレスかどうかのチェック.(末尾が@example.comで終わっていたらture)</br>
