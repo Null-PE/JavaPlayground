@@ -1,7 +1,5 @@
 package stringpractise;
 
-import net.bytebuddy.asm.Advice.Return;
-
 /**
  * 正規表現の練習</br>
  * 

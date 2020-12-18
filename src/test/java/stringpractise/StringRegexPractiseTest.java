@@ -142,7 +142,7 @@ public class StringRegexPractiseTest {
 	
 	@Test
 	public void testExtractFileName間に拡張子が入るパターン() {
-		assertThat(it.extractFileName("C:\\users\\works\\files.txt\\README.txt -> README"), is("README"));
+		assertThat(it.extractFileName("C:\\users\\works\\files.txt\\README.txt"), is("README"));
 	}
 
 	@Test
