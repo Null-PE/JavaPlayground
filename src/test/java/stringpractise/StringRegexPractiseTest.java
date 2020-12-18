@@ -12,7 +12,7 @@ public class StringRegexPractiseTest {
 	
 	@Before
 	public void setUp() {
-		it = new StringRegexPractise();
+		it = new MyStringRegexPractise();
 	}
 
 	@Test
@@ -114,7 +114,9 @@ public class StringRegexPractiseTest {
 
 	@Test
 	public void testJudgeNumber4() {
-		fail("まだ実装されていません");
+		assertThat(it.judgeNumber4("9999"), is(true));
+		assertThat(it.judgeNumber4("11"), is(false));
+		assertThat(it.judgeNumber4("a111"), is(false));
 	}
 
 	@Test

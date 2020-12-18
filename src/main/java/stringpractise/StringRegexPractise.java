@@ -85,8 +85,8 @@ public class StringRegexPractise implements IStringRegexPractise {
 
 	@Override
 	public boolean judgeNumber4(String target) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		Pattern p1 = Pattern.compile("\\d{4}");
+		return p1.matcher(target).matches();
 	}
 
 	@Override
