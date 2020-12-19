@@ -99,7 +99,10 @@ public class StringRegexPractiseTest {
 
 	@Test
 	public void testReplaceToRereleaseVersion() {
-		fail("まだ実装されていません");
+		String target = "各位　CIM165400で致命的な不具合が発生しました。 \\r\\n CIM165400~CIM165402の再リリースをお願いします。";
+		String rereleaseNum = "01";
+		String actual = it.replaceToRereleaseVersion(target, rereleaseNum);
+		assertThat(actual, is("各位　CIM16540001で致命的な不具合が発生しました。 \\r\\n CIM16540001~CIM16540201の再リリースをお願いします。"));
 	}
 
 	@Test
@@ -134,7 +137,12 @@ public class StringRegexPractiseTest {
 
 	@Test
 	public void testExtractFileName() {
-		fail("まだ実装されていません");
+		assertThat(it.extractFileName("C:\\users\\works\\files\\README.txt"), is("README"));
+	}
+	
+	@Test
+	public void testExtractFileName間に拡張子が入るパターン() {
+		assertThat(it.extractFileName("C:\\users\\works\\files.txt\\README.txt"), is("README"));
 	}
 
 	@Test
