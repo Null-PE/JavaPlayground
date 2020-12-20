@@ -1,4 +1,4 @@
-package day3;
+package streamapi.basic;
 
 import java.util.ArrayList;
 import java.util.Comparator;
