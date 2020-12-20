@@ -1,4 +1,4 @@
-package day3;
+package streamapi.basic;
 
 public class Person {
     private String name;
