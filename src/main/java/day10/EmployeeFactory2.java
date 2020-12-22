@@ -3,7 +3,7 @@ package day10;
 import java.util.ArrayList;
 import java.util.List;
 
-import day6.Employee;
+import common.Employee;
 
 public class EmployeeFactory2 {
 

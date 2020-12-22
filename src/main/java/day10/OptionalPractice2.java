@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import day6.Employee;
+import common.Employee;
 
 /**
  * 対になるJUnit TestCaseが用意されています

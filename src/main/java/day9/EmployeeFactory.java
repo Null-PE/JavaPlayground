@@ -1,9 +1,10 @@
 package day9;
 
-import day6.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import common.Employee;
 
 public class EmployeeFactory {
 

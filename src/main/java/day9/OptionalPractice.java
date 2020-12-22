@@ -1,8 +1,10 @@
 package day9;
 
-import day6.Employee;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+
+import common.Employee;
 
 public class OptionalPractice {
     private static final Employee NULL_EMP = new Employee("NULL", 999);

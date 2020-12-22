@@ -1,4 +1,4 @@
-package streamapi.basic;
+package common;
 
 public class Person {
     private String name;

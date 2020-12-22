@@ -1,11 +1,12 @@
 package day9;
 
-import day6.Employee;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+
+import common.Employee;
 
 public class OptionalPractice_answer {
     private static final Employee NULL_EMP = new Employee("NULL", 999);
