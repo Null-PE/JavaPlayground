@@ -13,7 +13,7 @@
 1. [String](doc/stringPractise/README.md)
 2. [Lambda](doc/JavaAPI/Lambda/lambda.md)
 3. StreamAPI
-4. [Optional](doc/day9/Optional.md)
+4. [Optional](doc/JavaAPI/Optional/Optional.md)
    
 
 ## 「４」設計　知識
