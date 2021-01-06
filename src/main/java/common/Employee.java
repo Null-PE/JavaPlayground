@@ -1,6 +1,4 @@
-package day6;
-
-import day3.Person;
+package common;
 
 public class Employee extends Person {
     public Employee(String name, int age) {

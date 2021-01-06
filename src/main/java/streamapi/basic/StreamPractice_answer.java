@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import common.Person;
+
 /**
  * Java SE8 StreamAPIの練習
  * 今日の課題は： no for-loop

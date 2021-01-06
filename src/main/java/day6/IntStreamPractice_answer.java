@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import common.Employee;
+
 public class IntStreamPractice_answer {
     public static void main(String[] args) {
         /*
