@@ -8,7 +8,7 @@
    1. [JUnit 道場2](doc/day12/README.md)
    1. [JUnit 道場3](doc/day14/README.md)  
    1. [JUnit 道場4](doc/day19/README.md)  
- 
+   1. [Parameterized Test](doc/junit/parameterizedTest.md)
 ## 「３」Java　知識
 1. [String](doc/stringPractise/README.md)
 2. [Lambda](doc/JavaAPI/Lambda/lambda.md)
