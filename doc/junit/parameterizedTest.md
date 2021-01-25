@@ -1,5 +1,7 @@
 # パラメータ化テスト(parameterized Test)
-[junit.parameterized](https://github.com/Null-PE/JavaPlayground/tree/master/src/main/java/junit/parameterized) パッケージ配下にあるコードを使います。  
+`junit.parameterized` パッケージ配下にあるコードを使います。  
+[実装](https://github.com/Null-PE/JavaPlayground/tree/master/src/main/java/junit/parameterized)  
+[テスト](https://github.com/Null-PE/JavaPlayground/tree/master/src/test/java/junit/parameterized)
 
 ## タイムスケジュール
 10:31 ~ 10:35 解説  
