@@ -2,8 +2,8 @@
 
 ## 課題
 
-1. UserAccountServiceTraditionalImplを修正し、UserAccountServiceTraditionalImplTestを合格させましょう
-1. UserNameを修正し、UserAccountServiceDddImplTestを合格させましょう
+1. UserAccountServiceTraditionalImplクラスを修正し、UserAccountServiceTraditionalImplTestクラスのテストを合格させましょう
+1. UserNameクラスを修正し、UserAccountServiceDddImplTestクラスのテストを合格させましょう
 1. 上記の2つのJUnit Testについて、updateUserメソッドに対しても同じようなルールのテストケースを追加しましょう
 1. 追加したテストケースを合格させましょう
 1. 最後に、TraditionalとDddのどちらのコードのほうが好き/嫌いだと思ったか、またそう思った理由を書きましょう
