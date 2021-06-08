@@ -42,3 +42,8 @@ dependencies {
 
 }
 
+test {
+//	JUnit5 test 実装
+    useJUnitPlatform()
+}
+
