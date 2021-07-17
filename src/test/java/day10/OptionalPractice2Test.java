@@ -5,10 +5,10 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashSet;
 import java.util.Optional;
 
+import common.Employee;
 import org.junit.Before;
 import org.junit.Test;
 
-import day6.Employee;
 
 /**
  * OptionalPractice2のJUnit テストケースです
