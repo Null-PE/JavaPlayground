@@ -1,5 +1,6 @@
 package junit.mockAndSpy;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -76,6 +77,7 @@ public class Mock_And_Spy {
         assertThrows(NullPointerException.class, () -> employee.getName().getLastName());
     }
 
+    @Ignore
     @Test
     public void no_deep_stub_2() {
         Employee employee = mock(Employee.class);
